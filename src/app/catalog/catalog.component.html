@@ -1,4 +1,4 @@
-<p>give-list works!</p>
+<p>catalog works!</p>
 
 <div class="card my-5">
   <div class="card-body">
@@ -16,11 +16,6 @@
           <td>{{ item.title }}</td>
           <td>{{ item.photo }}</td>
           <td>
-            <button id='remove' (click)="remove(item.id)">
-              X
-            </button>
-          </td>
-          <td>
             <button id='like' (click)="like(item.id)">
               Like
             </button>
@@ -30,4 +25,3 @@
     </table>
   </div>
 </div>
-<a routerLink="/additem" class="btn btn-info">Add Item</a>

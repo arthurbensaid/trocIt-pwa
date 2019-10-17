@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddItemComponent } from './pages/add-item/add-item.component';
 import { GiveListComponent } from './give-list/give-list.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CatalogComponent } from './catalog/catalog.component';
+import { ItemService } from './services/item.service';
+import { WorldItemsService } from './services/world-items.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { LoginComponent } from './pages/login/login.component';
     SignUpComponent,
     AddItemComponent,
     GiveListComponent,
-    LoginComponent
+    LoginComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { LoginComponent } from './pages/login/login.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, ItemService, WorldItemsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
