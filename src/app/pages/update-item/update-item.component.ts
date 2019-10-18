@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Item } from 'src/app/models/item';
@@ -13,12 +13,14 @@ export class UpdateItemComponent implements OnInit {
 
   public item: Item;
   public itemForm: FormGroup;
+  public selectedFile: File;
 
   constructor(
     private formBuilder: FormBuilder,
     private itemService: ItemService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cd: ChangeDetectorRef
   ) {
 
     this.item = new Item();
@@ -69,6 +71,49 @@ public get description(): AbstractControl {
     });
   }
 
+  onFileSelect(event) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      this.selectedFile = event.target.files[0];
+      console.log(this.selectedFile);
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = () => {
+        this.itemForm.patchValue({
+          file: this.selectedFile
+        });
+
+        // need to run CD since file load runs outside of zone
+        this.cd.markForCheck();
+      };
+    }
+  }
+////////////////////////////////////////////////////////////////////////////////
+
+  public submit() {
+    const newItem = new FormData();
+    newItem.append('title', this.title.value);
+    newItem.append('photo', this.selectedFile);
+    newItem.append('description', this.description.value);
+    /*
+    newItem.append('categories', this.categories.value);
+    */
+
+    this.itemService.updatePicture(newItem, this.item._id)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.gotoGiveList();
+      },
+      err => {
+        console.log('Error occured');
+      }
+    );
+  }
+
+////////////////////////////////////////////////////////////////////////////////
+
+  /*
   public submit() {
 
     console.log('Yo... Datas are: ' + JSON.stringify(this.itemForm.value));
@@ -90,6 +135,7 @@ public get description(): AbstractControl {
       }
     );
   }
+  */
 
   gotoGiveList() {
     this.router.navigate(['/myitems']);

@@ -6,7 +6,9 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Password</th>
+          <th scope="col">Avatar</th>
         </tr>
       </thead>
       <tbody>
@@ -14,6 +16,7 @@
           <td>{{ usr.id }}</td>
           <td>{{ usr.username }}</td>
           <td>{{ usr.password }}</td>
+          <td><img src="http://10.160.14.17:81/{{ usr.avatar }}"></td>
           <td>
             <button id='remove' (click)="remove(usr.id)">
               X

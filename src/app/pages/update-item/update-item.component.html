@@ -9,13 +9,13 @@
     >
   </div>
   <br>
-  <div class="photo">
+  <img src="http://10.160.14.17:81/{{ item.photo }}">
+  <div class="formGroup">
     <input
-      type="text"
+      type="file"
       id="photo"
       formControlName="photo"
-      placeholder=""
-    >
+      (change)="onFileSelect($event)" />
   </div>
   <br>
   <div class="formGroup">
@@ -29,7 +29,7 @@
   <br>
   <div class="formGroup">
     <button id='add' (click)="submit()" [disabled]="itemForm.invalid">
-    Ajouter
+    Update
     </button>
   </div>
 </form>
