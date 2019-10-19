@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,12 @@ export class AppComponent {
 
   title: string;
 
-  constructor() {
+  constructor(
+    private authenticationService: AuthenticationService,
+  ) {
     this.title = 'Troc It';
     }
+  public logout() {
+    this.authenticationService.logout();
+  }
 }

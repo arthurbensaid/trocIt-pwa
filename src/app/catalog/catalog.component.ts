@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WorldItemsService } from '../services/world-items.service';
+import { ItemService } from '../services/item.service';
 import { Item } from '../models/item';
 
 @Component({
@@ -11,7 +11,7 @@ export class CatalogComponent implements OnInit {
 
   items: Item[];
 
-  constructor(private iServ: WorldItemsService) { }
+  constructor(private iServ: ItemService) { }
 
   ngOnInit() {
     this.iServ.findAll().subscribe(data => {

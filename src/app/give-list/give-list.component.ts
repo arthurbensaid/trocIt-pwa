@@ -19,7 +19,7 @@ export class GiveListComponent implements OnInit {
 
   ngOnInit() {
     console.log(localStorage.getItem('currentUsr'));
-    this.itemService.findAll().subscribe(data => {
+    this.itemService.findMyItems().subscribe(data => {
       this.items = data;
     });
   }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usr } from '../models/usr';
 import { Observable } from 'rxjs';
-/*import { environment } from 'src/environments/environment';*/
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +25,10 @@ export class UserService {
     return this.http.post<Usr>(this.usersUrl, usr);
   }
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////
   public savePicture(newUsr: FormData) {
 
     return this.http.post<FormData>(this.usersUrl, newUsr);
   }
-////////////////////////////////////////////////////////////////////////////////////////////////
 
   public delete(id: number) {
     console.log('ça dégage !');
