@@ -63,4 +63,9 @@ export class Item {
     this.likers = value;
   }
 
+  public deserialize(data: any): Item {
+    Object.assign(this, data);
+    return this;
+  }
+
 }

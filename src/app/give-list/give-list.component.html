@@ -11,25 +11,30 @@
           <th scope="col">Description</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of items">
-          <td>{{ item.id }}</td>
-          <td>{{ item.title }}</td>
-          <td><img src="http://10.160.14.17:81/{{ item.photo }}"></td>
-          <td>{{ item.description }}</td>
-          <td>
-            <button id='remove' (click)="remove(item.id)">
-              X
-            </button>
-          </td>
-          <td>
-            <button id='update' (click)="update(item.id, item.title, item.photo, item.description)">
-              Update
-            </button>
-          </td>
-        </tr>
-      </tbody>
     </table>
   </div>
 </div>
-<a routerLink="/additem" class="btn btn-info">Add Item</a>
+<div *ngFor="let item of items">
+  <td>{{ item.id }}</td>
+  <td>{{ item.title }}</td>
+  <td><img src="http://10.160.14.17:81/{{ item.photo }}"></td>
+  <td>{{ item.description }}</td>
+  <td>
+    <button id='remove' (click)="remove(item.id)">
+      X
+    </button>
+  </td>
+  <td>
+    <button id='update' (click)="loadUpdateFormFor(item)">
+      Update
+    </button>
+  </td>
+</div>
+
+<button id='add' (click)="loadAddForm()">Add item</button>
+
+<!-- Ajouter le composant de création d'un nouvel item -->
+<app-add-item (addItemEvent)="receiveAddForm($event)" [itemForm]="itemForm" [hidden]="!creatingItem"></app-add-item>
+
+<!-- Ajouter le composant de mise a jour -->
+<app-update-item (updateItemEvent)="receiveUpdateForm($event)" [itemForm]="itemForm" [hidden]="!hasItem()"></app-update-item>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Item } from 'src/app/models/item';
@@ -11,15 +11,27 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class AddItemComponent implements OnInit {
 
+  /**
+   * Input attribute from the parent directive [itemForm]
+   */
+  @Input() public itemForm: FormGroup;
+
+  public selectedFile: File;
+
+  @Output() addItemEvent: EventEmitter<FormData> = new EventEmitter<FormData>();
+
+  /*
   public item: Item;
   public itemForm: FormGroup;
-  public selectedFile: File;
   public categorySet: Array<string>;
+  */
 
   constructor(
+    /*
     private formBuilder: FormBuilder,
     private itemService: ItemService,
     private router: Router,
+    */
     private cd: ChangeDetectorRef
   ) { }
 
@@ -45,12 +57,15 @@ public get categories(): AbstractControl {
 */
 
   ngOnInit() {
+    /*
     this.item = new Item();
     this.categorySet = ['Book', 'Video Game', 'Board Game'];
     console.log(this.categorySet);
     this._setForm();
+    */
   }
 
+  /*
   private _setForm(): void {
     this.itemForm = this.formBuilder.group({
       title: [
@@ -71,9 +86,9 @@ public get categories(): AbstractControl {
         '',
         Validators.required,
       ]
-      */
     });
   }
+  */
 
   onFileSelect(event) {
     const reader = new FileReader();
@@ -103,6 +118,9 @@ public get categories(): AbstractControl {
     newItem.append('categories', this.categories.value);
     */
 
+    this.addItemEvent.emit(newItem);
+
+    /*
     this.itemService.savePicture(newItem)
     .subscribe(
       res => {
@@ -113,6 +131,11 @@ public get categories(): AbstractControl {
         console.log('Error occured');
       }
     );
+    */
+  }
+
+  public dismiss() {
+    this.addItemEvent.emit(null);
   }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -138,10 +161,9 @@ public get categories(): AbstractControl {
     );
   }
 
-  */
-
   gotoGiveList() {
     this.router.navigate(['/myitems']);
   }
+  */
 
 }
