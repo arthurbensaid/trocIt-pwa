@@ -1,5 +1,6 @@
 <p>update-item works!</p>
-<form [formGroup]='itemForm'>
+
+<form [formGroup]='itemForm' id="itemForm" *ngIf="itemForm">
   <div class="formGroup">
     <input
       type="text"
@@ -9,7 +10,7 @@
     >
   </div>
   <br>
-  <img src="http://10.160.14.17:81/{{ item.photo }}">
+  <!--<img src="http://10.160.14.17:81/{{ anItem.photo }}">-->
   <div class="formGroup">
     <input
       type="file"
@@ -28,7 +29,7 @@
   </div>
   <br>
   <div class="formGroup">
-    <button id='add' (click)="submit()" [disabled]="itemForm.invalid">
+    <button id='update' (click)="submit()" [disabled]="itemForm.invalid">
     Update
     </button>
   </div>

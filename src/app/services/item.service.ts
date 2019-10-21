@@ -13,7 +13,7 @@ export class ItemService {
   public usrId = localStorage.getItem('currentUsr');
 
   constructor(private http: HttpClient) {
-    this.itemsUrl = 'http://localhost:8080/items';
+    this.itemsUrl = 'http://localhost:8080/items/';
     this.usersUrl = 'http://localhost:8080/users/' + this.usrId + '/items/';
   }
 
@@ -21,7 +21,7 @@ export class ItemService {
     if (this.usrId === null) {
       return this.http.get<Item[]>(this.itemsUrl);
     }
-    return this.http.get<Item[]>(this.itemsUrl + this.usrId);
+    return this.http.get<Item[]>('http://localhost:8080/' + this.usrId + '/items/');
   }
 
   public like(id: number) {

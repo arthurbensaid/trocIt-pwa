@@ -19,12 +19,14 @@ const routes: Routes = [
   {
     path: 'login', component: LoginComponent
   },
+  /*
   {
     path: 'additem', component: AddItemComponent
   },
   {
     path: 'updateitem', component: UpdateItemComponent
   },
+  */
   {
     path: 'items', component: CatalogComponent
   },
