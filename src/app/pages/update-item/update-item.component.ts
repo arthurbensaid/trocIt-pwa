@@ -5,23 +5,35 @@ import { Item } from 'src/app/models/item';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
-  selector: 'app-add-item',
-  templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.scss']
+  selector: 'app-update-item',
+  templateUrl: './update-item.component.html',
+  styleUrls: ['./update-item.component.scss']
 })
-export class AddItemComponent implements OnInit {
+export class UpdateItemComponent implements OnInit {
 
   public item: Item;
   public itemForm: FormGroup;
   public selectedFile: File;
-  public categorySet: Array<string>;
 
   constructor(
     private formBuilder: FormBuilder,
     private itemService: ItemService,
     private router: Router,
+    private route: ActivatedRoute,
     private cd: ChangeDetectorRef
-  ) { }
+  ) {
+
+    this.item = new Item();
+
+    this.route.queryParams.subscribe(params => {
+      console.log(params.itemId);
+
+      this.item._id = params.itemId;
+      this.item._title = params.itemTitle;
+      this.item._photo = params.itemPhoto;
+      this.item._description = params.itemDescription;
+  });
+  }
 
   /***
    * Controls getter
@@ -38,40 +50,24 @@ public get description(): AbstractControl {
   return this.itemForm.controls.description;
 }
 
-/*
-public get categories(): AbstractControl {
-  return this.itemForm.controls.categories;
-}
-*/
-
   ngOnInit() {
-    this.item = new Item();
-    this.categorySet = ['Book', 'Video Game', 'Board Game'];
-    console.log(this.categorySet);
     this._setForm();
   }
 
   private _setForm(): void {
+
     this.itemForm = this.formBuilder.group({
       title: [
-        '',
+        this.item._title,
         [Validators.required, Validators.minLength(3)]
       ],
       photo: [
-        '',
-        Validators.required,
+        this.item._photo
       ],
       description: [
-        '',
+        this.item._description,
         Validators.required,
       ]
-      /*
-      ,
-      categories: [
-        '',
-        Validators.required,
-      ]
-      */
     });
   }
 
@@ -103,7 +99,7 @@ public get categories(): AbstractControl {
     newItem.append('categories', this.categories.value);
     */
 
-    this.itemService.savePicture(newItem)
+    this.itemService.updatePicture(newItem, this.item._id)
     .subscribe(
       res => {
         console.log(res);
@@ -116,8 +112,10 @@ public get categories(): AbstractControl {
   }
 
 ////////////////////////////////////////////////////////////////////////////////
-/*
+
+  /*
   public submit() {
+
     console.log('Yo... Datas are: ' + JSON.stringify(this.itemForm.value));
 
     console.log(this.title.value);
@@ -126,7 +124,7 @@ public get categories(): AbstractControl {
     this.item._photo = this.photo.value;
     this.item._description = this.description.value;
 
-    this.itemService.save(this.item)
+    this.itemService.update(this.item)
     .subscribe(
       res => {
         console.log(res); // Get the ID from backend...
@@ -137,7 +135,6 @@ public get categories(): AbstractControl {
       }
     );
   }
-
   */
 
   gotoGiveList() {

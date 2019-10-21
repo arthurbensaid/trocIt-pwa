@@ -1,24 +1,15 @@
+<p>update-item works!</p>
 <form [formGroup]='itemForm'>
   <div class="formGroup">
     <input
       type="text"
       id="title"
       formControlName="title"
-      placeholder=" Title"
+      placeholder=""
     >
   </div>
   <br>
-  <!--
-  <div class="photo">
-    <input
-      type="text"
-      id="photo"
-      formControlName="photo"
-      placeholder=" Photo"
-    >
-  </div>
-  <br>
-  -->
+  <img src="http://10.160.14.17:81/{{ item.photo }}">
   <div class="formGroup">
     <input
       type="file"
@@ -32,13 +23,13 @@
       type="text"
       id="description"
       formControlName="description"
-      placeholder=" Description"
+      placeholder=""
     >
   </div>
   <br>
   <div class="formGroup">
     <button id='add' (click)="submit()" [disabled]="itemForm.invalid">
-    Ajouter
+    Update
     </button>
   </div>
 </form>

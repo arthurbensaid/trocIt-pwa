@@ -19,11 +19,10 @@
   <br>
   <div class="formGroup">
     <input
-      type="text"
+      type="file"
       id="avatar"
       formControlName="avatar"
-      placeholder=" Avatar"
-    >
+      (change)="onFileSelect($event)" />
   </div>
   <br>
   <div class="formGroup">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../models/item';
 import { ItemService } from '../services/item.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-give-list',
@@ -11,11 +12,14 @@ export class GiveListComponent implements OnInit {
 
   items: Item[];
 
-  constructor(private itemService: ItemService) { }
+  constructor(
+    private itemService: ItemService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     console.log(localStorage.getItem('currentUsr'));
-    this.itemService.findAll().subscribe(data => {
+    this.itemService.findMyItems().subscribe(data => {
       this.items = data;
     });
   }
@@ -31,6 +35,18 @@ export class GiveListComponent implements OnInit {
         console.log('Error occured');
       }
     );
+  }
+
+  public update(id: number, title: string, photo: string, description: string) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+          itemId: id,
+          itemTitle: title,
+          itemPhoto: photo,
+          itemDescription: description
+        }
+      };
+    this.router.navigate(['updateitem'], navigationExtras);
   }
 
 }

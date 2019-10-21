@@ -5,9 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 import { UserService } from './services/user-service';
-import { UserListComponent } from './user-list/user-list.component';
 import { SignUpComponent } from './pages/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddItemComponent } from './pages/add-item/add-item.component';
@@ -15,19 +13,20 @@ import { GiveListComponent } from './give-list/give-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { ItemService } from './services/item.service';
-import { WorldItemsService } from './services/world-items.service';
 import { HomeComponent } from './pages/home/home.component';
+import { UpdateItemComponent } from './pages/update-item/update-item.component';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent,
     SignUpComponent,
     AddItemComponent,
     GiveListComponent,
     LoginComponent,
     CatalogComponent,
-    HomeComponent
+    HomeComponent,
+    UpdateItemComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +34,7 @@ import { HomeComponent } from './pages/home/home.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, ItemService, WorldItemsService],
+  providers: [UserService, ItemService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

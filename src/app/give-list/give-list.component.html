@@ -8,21 +8,23 @@
           <th scope="col">#</th>
           <th scope="col">Title</th>
           <th scope="col">Photo</th>
+          <th scope="col">Description</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of items">
           <td>{{ item.id }}</td>
           <td>{{ item.title }}</td>
-          <td>{{ item.photo }}</td>
+          <td><img src="http://10.160.14.17:81/{{ item.photo }}"></td>
+          <td>{{ item.description }}</td>
           <td>
             <button id='remove' (click)="remove(item.id)">
               X
             </button>
           </td>
           <td>
-            <button id='like' (click)="like(item.id)">
-              Like
+            <button id='update' (click)="update(item.id, item.title, item.photo, item.description)">
+              Update
             </button>
           </td>
         </tr>

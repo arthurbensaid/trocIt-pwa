@@ -17,13 +17,13 @@ export class AuthenticationService {
         return this.currentUsrSubject.value;
     }
 
-    login(username, password) {
-        return this.http.post<any>(`http://localhost:8080/users/validateLogin`, { username, password })
-            .pipe(map(usr => {
+    login(userName: string, passWord: string) {
+        return this.http.get<number>(`http://localhost:8080/users/validateLogin`, {params: {username: userName, password: passWord}})
+            .pipe(map(usrId => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUsr', JSON.stringify(usr));
-                this.currentUsrSubject.next(usr);
-                return usr;
+                localStorage.setItem('currentUsr', JSON.stringify(usrId));
+                this.currentUsrSubject.next(usrId);
+                return usrId;
             }));
     }
 
