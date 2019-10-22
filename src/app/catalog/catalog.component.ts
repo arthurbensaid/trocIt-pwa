@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ItemService } from '../services/item.service';
 import { Item } from '../models/item';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-// import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
@@ -10,9 +10,6 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-
-  // private modalRef: BsModalRef;
-  // navbarOpen: boolean;
 
   items: Item[];
   private modalRef: BsModalRef;
@@ -24,7 +21,8 @@ export class CatalogComponent implements OnInit {
 
   constructor(
     private iServ: ItemService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -57,13 +55,9 @@ export class CatalogComponent implements OnInit {
         console.log('Error occured');
       }
     );
-  }
 
-  /*
-  toggleNavbar() {
-this.navbarOpen = !this.navbarOpen;
+    this.router.navigate(['mylikes']);
   }
-  */
 
   openModal(template: TemplateRef<any>, item: Item) {
     this.currentItem = item;

@@ -101,7 +101,6 @@ export class SignUpComponent implements OnInit {
       };
     }
   }
-////////////////////////////////////////////////////////////////////////////////
 
   public submit() {
     const newUsr = new FormData();
@@ -123,34 +122,6 @@ export class SignUpComponent implements OnInit {
       }
     );
   }
-
-////////////////////////////////////////////////////////////////////////////////
-
-  /*
-  public submit() {
-    console.log('Yo... Datas are: ' + JSON.stringify(this.userForm.value));
-
-    console.log(this.username.value);
-
-    this.usr._username = this.username.value;
-    this.usr._password = this.password.value;
-    this.usr._avatar = this.avatar.value;
-    this.usr._email = this.email.value;
-    this.usr._phone = this.phone.value;
-    this.usr._town = this.town.value;
-
-    this.userService.save(this.usr)
-    .subscribe(
-      res => {
-        console.log(res); // Get the ID from backend...
-        this.gotoUserList();
-      },
-      err => {
-        console.log('Error occured');
-      }
-    );
-  }
-  */
 
   gotoUserList() {
     this.router.navigate(['/users']);

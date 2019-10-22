@@ -16,7 +16,7 @@
           <p class="card-text">{{ item.description }}</p>
           <button class="btn btn-dark btn-lg" (click)="openModal(popupr, item)">En savoir plus...</button>
           <div class="card-footer">
-            <small class="text-muted"> Posté par (....)</small>
+            <!--<small class="text-muted"> Posté par (....)</small>-->
             <!-- lottie animation-->
             <span id="like">
               <button class="btn center" (click)="like(item.id)">
@@ -51,218 +51,17 @@
           <p class="card-texty">{{ currentItem.description }}</p>
       </div>
       <!-- lottie animation-->
-      <button class="btn-center" (click)="like(currentItem.id)">
-      <lottie-player
+      <button class="btn-center" (click)="like(currentItem.id); modalRef.hide()">
+        <lottie-player
           src="https://assets10.lottiefiles.com/packages/lf20_ePsPBX.json" background="transparent"
           speed="0.7"  style="width: 100px; height: 100px;" hover loop>
-      </lottie-player>
+        </lottie-player>
       </button>
 
       <div class="card-footer" class="text-center">
-        <small class="text-muted"> Posté par (get.item.usr)</small>
+      <!--  <small class="text-muted"> Posté par (get.item.usr)</small>-->
       </div>
     </div>
 
   </ng-template>
 </div>
-
-<!--
-
-<div class="container mt-4 text center">
-  <div class="row justify-content-center">
-    <div class="col-md-4 col-12" *ngFor="let item of items">
-      <div class="card shadow">
-        <div class="inner">
-          <img class="card-img-top img-fluid"
-            src="http://10.160.14.17:81/{{ item.photo }}"
-            alt="Card image cap">
-        </div>
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ item.title }}</h5>
-          <p class="card-text">{{ item.description }}</p>
-          <button class="btn btn-dark btn-lg" (click)="openModal(popup)">En savoir plus...</button>
-          <br>
-          <div class="card-footer">
-          <small class="text-muted"> Posté par (....)</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
--->
-
-
-<!-- Modal
-
-<div class="container">
-
-<ng-template #popup>
-  <div class="modal-header">
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-title" class="text-center">
-    Title
-  </div>
-    <div class="modal-body">
-  Description
-
-  </div>
-  <div class="modal-footer">
-  Posté par (...)
-  </div>
-</ng-template>
-
-</div>
-
-<div class="container">
-
-<ng-template #popupform >
-  <div class="modal-header" class="text-center" >
-  <strong>Nous rejoindre</strong>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
-    <div class="modal-body">
-
-<form [formGroup]='userForm' style="margin:auto; display:block; text-align:center">
-  <div class="formGroup">
-    <input
-      type="text"
-      id="username"
-      formControlName="username"
-      placeholder=" Pseudo"
-    >
-  </div>
-  <br>
-  <div class="formGroup">
-    <input
-      type="text"
-      id="password"
-      formControlName="password"
-      placeholder=" Mot de passe"
-    >
-  </div>
-  <br>
-  <div class="formGroup">
-    <input
-      type="text"
-      id="avatar"
-      formControlName="avatar"
-      placeholder=" Avatar"
-    >
-  </div>
-  <br>
-  <div class="formGroup">
-    <input
-      type="text"
-      id="email"
-      formControlName="email"
-      placeholder=" Email"
-    >
-  </div>
-  <br>
-  <div class="formGroup">
-    <input
-      type="text"
-      id="phone"
-      formControlName="phone"
-      placeholder=" Telephone"
-    >
-  </div>
-  <br>
-  <div class="formGroup">
-    <input
-      type="text"
-      id="town"
-      formControlName="town"
-      placeholder=" Ville"
-    >
-  </div>
-  <br>
-</form>
-
-</div>
-  <div class="modal-footer">
-  <a href="" class="btn btn-dark btn-lg" style="margin:auto;display:block">C'est parti !</a>
-  </div>
-
-</ng-template>
-
-</div>
-
-<div class="container">
-
-<ng-template #popupform2>
-  <div class="modal-header" class="text-center">
-  <strong>Se Connecter</strong>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
-    <div class="modal-body">
-
-<form [formGroup]='userForm' style="margin:auto; display:block; text-align:center">
-  <div class="formGroup">
-    <input
-      type="text"
-      id="email"
-      formControlName="email"
-      placeholder=" Email"
-    >
-  </div>
-  <br>
-  <div class="formGroup">
-    <input
-      type="text"
-      id="password"
-      formControlName="password"
-      placeholder=" Mot de passe"
-    >
-  </div>
-
-  <br>
-</form>
-
-</div>
-  <div class="modal-footer">
-  <a href="" class="btn btn-dark btn-lg" style="margin:auto;display:block">Let's go !</a>
-  </div>
-
-</ng-template>
-
-</div>
-
-
-<div class="card my-5">
-  <div class="card-body">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Photo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of items">
-          <td>{{ item.id }}</td>
-          <td>{{ item.title }}</td>
-          <td>{{ item.photo }}</td>
-          <td>
-            <button id='like' (click)="like(item.id)">
-              Like
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
--->

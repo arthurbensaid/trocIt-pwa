@@ -17,21 +17,16 @@ export class NotifComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    /*
     this.items = new Array<Item>();
     console.log(localStorage.getItem('currentUsr'));
-    this.itemService.findMyItems().subscribe(data => {
+    this.itemService.findMyNotifs().subscribe(data => { // TODO My Notif request
       data.forEach(item => {
         const newItem = new Item().deserialize(item);
         this.items.push(newItem);
       });
     });
+    */
   }
-
-  /*
-  public getNotif() {
-    this.items.forEach(item)
-
-  }
-  */
 
 }

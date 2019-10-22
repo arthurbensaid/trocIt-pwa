@@ -1,33 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserListComponent } from './user-list/user-list.component';
-import { SignUpComponent } from './pages/signup/signup.component';
-import { AddItemComponent } from './pages/add-item/add-item.component';
 import { GiveListComponent } from './give-list/give-list.component';
-import { LoginComponent } from './pages/login/login.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import { UpdateItemComponent } from './pages/update-item/update-item.component';
 import { MylikesComponent } from './pages/mylikes/mylikes.component';
+import { NotifComponent } from './pages/notif/notif.component';
 
 
 const routes: Routes = [
-  /*
-  {
-    path: 'users', component: UserListComponent
-  },
-  {
-    path: 'signup', component: SignUpComponent
-  },
-  {
-    path: 'login', component: LoginComponent
-  },
-  {
-    path: 'additem', component: AddItemComponent
-  },
-  {
-    path: 'updateitem', component: UpdateItemComponent
-  },
-  */
   {
     path: '', component: CatalogComponent
   },
@@ -36,6 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'myitems', component: GiveListComponent
+  },
+  {
+    path: 'mynotifs', component: NotifComponent
   }
 ];
 

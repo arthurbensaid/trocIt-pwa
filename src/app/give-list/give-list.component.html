@@ -39,29 +39,31 @@
   <div class="modal-title" class="text-center">
     Title
   </div>
-    <div class="modal-body">
-  Description
+  <div class="modal-body">
+    Description
 
   </div>
+  <!--
   <div class="modal-footer">
-  Posté par (...)
+    Posté par (...)
   </div>
+  -->
 </ng-template>
 
 <ng-template #popupform >
   <div class="modal-header" class="text-center" >
-  <strong>Nous rejoindre</strong>
+    <strong>Nouvel Item</strong>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 
-    <div class="modal-body">
+  <div class="modal-body">
 
-      <!-- Ajouter le composant de création d'un nouvel item -->
-      <app-add-item (addItemEvent)="receiveAddForm($event)" [itemForm]="itemForm" [hidden]="!creatingItem"></app-add-item>
+    <!-- Ajouter le composant de création d'un nouvel item -->
+    <app-add-item (addItemEvent)="receiveAddForm($event)" [itemForm]="itemForm" [hidden]="!creatingItem"></app-add-item>
 
-    </div>
+  </div>
 
 </ng-template>
 
@@ -69,18 +71,18 @@
 
 <ng-template #popupform2>
   <div class="modal-header" class="text-center">
-  <strong>Se Connecter</strong>
+    <strong>Modifier l'Item</strong>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 
-    <div class="modal-body">
+  <div class="modal-body">
 
-      <!-- Ajouter le composant de mise a jour -->
-      <app-update-item (updateItemEvent)="receiveUpdateForm($event)" [itemForm]="itemForm" [hidden]="!hasItem()"></app-update-item>
+    <!-- Ajouter le composant de mise a jour -->
+    <app-update-item (updateItemEvent)="receiveUpdateForm($event)" [itemForm]="itemForm" [hidden]="!hasItem()"></app-update-item>
 
-    </div>
+  </div>
 
 </ng-template>
 

@@ -20,7 +20,7 @@ export class UserService {
 
   public save(usr: Usr) {
 
-    console.log('Coucou cest le service ' + usr._username);
+    console.log('Nouvel Usr ' + usr._username);
 
     return this.http.post<Usr>(this.usersUrl, usr);
   }
@@ -31,8 +31,6 @@ export class UserService {
   }
 
   public delete(id: number) {
-    console.log('ça dégage !');
-    console.log(this.usersUrl + id);
     return this.http.delete(this.usersUrl + id);
   }
 }

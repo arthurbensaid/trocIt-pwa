@@ -1,8 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Item } from 'src/app/models/item';
-import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-add-item',
@@ -20,18 +17,7 @@ export class AddItemComponent implements OnInit {
 
   @Output() addItemEvent: EventEmitter<FormData> = new EventEmitter<FormData>();
 
-  /*
-  public item: Item;
-  public itemForm: FormGroup;
-  public categorySet: Array<string>;
-  */
-
   constructor(
-    /*
-    private formBuilder: FormBuilder,
-    private itemService: ItemService,
-    private router: Router,
-    */
     private cd: ChangeDetectorRef
   ) { }
 
@@ -57,38 +43,7 @@ public get categories(): AbstractControl {
 */
 
   ngOnInit() {
-    /*
-    this.item = new Item();
-    this.categorySet = ['Book', 'Video Game', 'Board Game'];
-    console.log(this.categorySet);
-    this._setForm();
-    */
   }
-
-  /*
-  private _setForm(): void {
-    this.itemForm = this.formBuilder.group({
-      title: [
-        '',
-        [Validators.required, Validators.minLength(3)]
-      ],
-      photo: [
-        '',
-        Validators.required,
-      ],
-      description: [
-        '',
-        Validators.required,
-      ]
-      /*
-      ,
-      categories: [
-        '',
-        Validators.required,
-      ]
-    });
-  }
-  */
 
   onFileSelect(event) {
     const reader = new FileReader();
@@ -107,7 +62,6 @@ public get categories(): AbstractControl {
       };
     }
   }
-////////////////////////////////////////////////////////////////////////////////
 
   public submit() {
     const newItem = new FormData();
@@ -120,50 +74,10 @@ public get categories(): AbstractControl {
 
     this.addItemEvent.emit(newItem);
 
-    /*
-    this.itemService.savePicture(newItem)
-    .subscribe(
-      res => {
-        console.log(res);
-        this.gotoGiveList();
-      },
-      err => {
-        console.log('Error occured');
-      }
-    );
-    */
   }
 
   public dismiss() {
     this.addItemEvent.emit(null);
   }
-
-////////////////////////////////////////////////////////////////////////////////
-/*
-  public submit() {
-    console.log('Yo... Datas are: ' + JSON.stringify(this.itemForm.value));
-
-    console.log(this.title.value);
-
-    this.item._title = this.title.value;
-    this.item._photo = this.photo.value;
-    this.item._description = this.description.value;
-
-    this.itemService.save(this.item)
-    .subscribe(
-      res => {
-        console.log(res); // Get the ID from backend...
-        this.gotoGiveList();
-      },
-      err => {
-        console.log('Error occured');
-      }
-    );
-  }
-
-  gotoGiveList() {
-    this.router.navigate(['/myitems']);
-  }
-  */
 
 }
