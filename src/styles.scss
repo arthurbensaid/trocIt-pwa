@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+
+/**
+* Import bootstrap from node_modules
+**/
+@import "~bootstrap/scss/bootstrap.scss";
+
+
+body {
+  background-color: #1f2833;
+}
+
+h2 {
+  text-align: center;
+  color: aquamarine;
+  margin: auto;
+}
+
+.active {
+  color: aquamarine;
+}
+
+// Cards
+.btn-dark {
+  color: aquamarine;
+  margin-bottom: 1em;
+}
+
+.btn-dark:hover {
+  background-color: rgb(69, 87, 136);
+    //color: rgb(10, 8, 8);
+}
+
+.card {
+  margin-bottom: 8%;
+}
+
+
+
+

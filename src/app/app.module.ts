@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,6 +16,10 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { ItemService } from './services/item.service';
 import { UpdateItemComponent } from './pages/update-item/update-item.component';
 import { AuthenticationService } from './services/authentication.service';
+import { NotifComponent } from './pages/notif/notif.component';
+import { ModalModule } from 'ngx-bootstrap';
+import { MylikesComponent } from './pages/mylikes/mylikes.component';
+
 
 @NgModule({
   declarations: [
@@ -26,14 +30,18 @@ import { AuthenticationService } from './services/authentication.service';
     GiveListComponent,
     LoginComponent,
     CatalogComponent,
-    UpdateItemComponent
+    UpdateItemComponent,
+    NotifComponent,
+    MylikesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [UserService, ItemService, AuthenticationService],
   bootstrap: [AppComponent]
 })

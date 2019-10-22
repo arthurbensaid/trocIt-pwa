@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ItemService } from '../services/item.service';
 import { Item } from '../models/item';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+// import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-catalog',
@@ -9,13 +11,30 @@ import { Item } from '../models/item';
 })
 export class CatalogComponent implements OnInit {
 
-  items: Item[];
+  // private modalRef: BsModalRef;
+  // navbarOpen: boolean;
 
-  constructor(private iServ: ItemService) { }
+  items: Item[];
+  private modalRef: BsModalRef;
+
+  /**
+   * Item selected
+   */
+  public currentItem: Item;
+
+  constructor(
+    private iServ: ItemService,
+    private modalService: BsModalService
+    ) { }
 
   ngOnInit() {
-    this.iServ.findAll().subscribe(data => {
-      this.items = data;
+    this.items = new Array<Item>();
+    console.log(localStorage.getItem('currentUsr'));
+    this.iServ.findMyItems().subscribe(data => {
+      data.forEach(item => {
+        const newItem = new Item().deserialize(item);
+        this.items.push(newItem);
+      });
     });
   }
 
@@ -38,6 +57,17 @@ export class CatalogComponent implements OnInit {
         console.log('Error occured');
       }
     );
+  }
+
+  /*
+  toggleNavbar() {
+this.navbarOpen = !this.navbarOpen;
+  }
+  */
+
+  openModal(template: TemplateRef<any>, item: Item) {
+    this.currentItem = item;
+    this.modalRef = this.modalService.show(template);
   }
 
 }

@@ -66,6 +66,8 @@ public get password(): AbstractControl {
                 this.error = error;
                 this.loading = false;
             });
+    // tslint:disable-next-line: deprecation
+    setTimeout(location.reload.bind(location), 500);
 }
 
 }

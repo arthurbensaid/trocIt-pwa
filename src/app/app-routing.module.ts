@@ -7,9 +7,11 @@ import { GiveListComponent } from './give-list/give-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { UpdateItemComponent } from './pages/update-item/update-item.component';
+import { MylikesComponent } from './pages/mylikes/mylikes.component';
 
 
 const routes: Routes = [
+  /*
   {
     path: 'users', component: UserListComponent
   },
@@ -19,7 +21,6 @@ const routes: Routes = [
   {
     path: 'login', component: LoginComponent
   },
-  /*
   {
     path: 'additem', component: AddItemComponent
   },
@@ -28,7 +29,10 @@ const routes: Routes = [
   },
   */
   {
-    path: 'items', component: CatalogComponent
+    path: '', component: CatalogComponent
+  },
+  {
+    path: 'mylikes', component: MylikesComponent
   },
   {
     path: 'myitems', component: GiveListComponent

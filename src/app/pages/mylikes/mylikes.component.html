@@ -1,0 +1,22 @@
+<div class="container mt-4 text center">
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-12" *ngFor="let item of items">
+      <div class="card shadow">
+        <div class="inner">
+          <img class="card-img-top img-fluid"
+            src="http://10.160.14.17:81/{{ item.photo }}"
+            alt="Card image cap">
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <button class="btn btn-dark btn-lg" (click)="openModal(popupr)">En savoir plus...</button>
+          <div class="card-footer">
+            <small class="text-muted"> Posté par (....)</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

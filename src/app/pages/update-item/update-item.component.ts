@@ -15,7 +15,7 @@ export class UpdateItemComponent implements OnInit {
    * Input attribute from the parent directive [itemForm]
    */
   @Input() public itemForm: FormGroup;
-  //@Input() public anItem: Item;
+  // @Input() public anItem: Item;
 
   @Output() updateItemEvent: EventEmitter<FormData> = new EventEmitter<FormData>();
 

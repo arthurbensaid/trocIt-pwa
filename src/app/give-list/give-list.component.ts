@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Item } from '../models/item';
 import { ItemService } from '../services/item.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-give-list',
@@ -24,14 +25,17 @@ export class GiveListComponent implements OnInit {
   public creatingItem: boolean;
 
   /**
-   * Update form we'll pass to our task
+   * Update form we'll pass to our child components
    */
   private itemForm: FormGroup;
+
+  private modalRef: BsModalRef;
 
   constructor(
     private itemService: ItemService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private modalService: BsModalService
     ) { }
 
   ngOnInit() {
@@ -61,10 +65,7 @@ export class GiveListComponent implements OnInit {
    * @param item Item object to be updated
    */
   public loadUpdateFormFor(item: Item) {
-    console.log(this.hasItem());
     this.anItem = item;
-    console.log(this.hasItem());
-    console.log(this.anItem._title);
     // Invoke formBuilder method for this item
     this._setUpdateForm();
   }
@@ -90,6 +91,9 @@ export class GiveListComponent implements OnInit {
         console.log('Error occured');
       }
     );
+
+    // tslint:disable-next-line: deprecation
+    setTimeout(location.reload.bind(location), 500);
   }
 
   public receiveUpdateForm(formData: FormData): void {
@@ -106,6 +110,9 @@ export class GiveListComponent implements OnInit {
       );
     }
     this.anItem = null;
+
+    // tslint:disable-next-line: deprecation
+    setTimeout(location.reload.bind(location), 500);
   }
 
   public receiveAddForm(formData: FormData): void {
@@ -122,6 +129,9 @@ export class GiveListComponent implements OnInit {
       );
     }
     this.creatingItem = false;
+
+    // tslint:disable-next-line: deprecation
+    setTimeout(location.reload.bind(location), 500);
   }
 
   private _setUpdateForm(): void {
@@ -159,6 +169,11 @@ export class GiveListComponent implements OnInit {
         Validators.required,
       ]
     });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.loadAddForm();
+    this.modalRef = this.modalService.show(template);
   }
 
 }
