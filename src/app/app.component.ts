@@ -10,6 +10,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+<<<<<<< HEAD
 
   title: string;
   public usrId = localStorage.getItem('currentUsr');
@@ -18,6 +19,9 @@ export class AppComponent {
   private navbarOpen = false;
 
   private loginForm: FormGroup;
+=======
+  title:String;
+>>>>>>> 91b9addde85bb7c8bf3101eece797c24489a2ef1
 
   constructor(
     private modalService: BsModalService,

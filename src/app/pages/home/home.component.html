@@ -1,0 +1,40 @@
+<div class="jumbotron text-center">
+  <h1 class="display-4 text-white">
+    La productivité au 21ème siècle
+  </h1>
+  <h2 class="text-white">
+    Atteignez plus d'objectifs en moins de temps.
+  </h2>
+  <p class="lead mt-4">
+    <a class="btn btn-success btn-lg" href="#" role="button" routerLink="/app/dashboard">
+    <strong>Terminez vos journées en héros</strong>
+    </a>
+  </p>
+</div>
+<button (click)="toggle()" id="bt">
+    {{buttonName}}
+</button>
+
+<ng-container *ngIf="show">
+    
+
+<div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Photo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>{{ item.id }}</td>
+          <td>{{ item.title }}</td>
+          <td>{{ item.photo }}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
