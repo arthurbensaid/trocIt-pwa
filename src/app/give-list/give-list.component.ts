@@ -1,7 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Item } from '../models/item';
 import { ItemService } from '../services/item.service';
-import { Router, NavigationExtras } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
@@ -30,12 +29,12 @@ export class GiveListComponent implements OnInit {
   private itemForm: FormGroup;
 
   private modalRef: BsModalRef;
+  private subscriber: any;
 
   constructor(
     private itemService: ItemService,
     private formBuilder: FormBuilder,
-    private router: Router,
-    private modalService: BsModalService
+    private modalService: BsModalService,
     ) { }
 
   ngOnInit() {

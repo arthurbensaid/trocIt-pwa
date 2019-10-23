@@ -4,29 +4,69 @@
 **/
 @import "~bootstrap/scss/bootstrap.scss";
 
+@import "https://fonts.googleapis.com/css?family=Advent+Pro|Sun Flower|Armata|Orbitron|Alfa+Slab+One|Dosis|Monda|Overpass|Permanent+Marker|Play|Quicksand&display|Turret+Road=swap";
+
+
+h2 {
+  text-align: center;
+  color: rgb(64, 155, 123);
+  margin: auto;
+  font-family: 'Armata', sans-serif;
+
+}
+
+
+.navbar {
+  margin-bottom: 2em;
+  background-color: rgb(48, 98, 86);
+
+
+  }
+
+  .nav-link {
+    font-family: 'Orbitron', sans-serif;
+    color: lightskyblue;
+  }
+
+
+  @media (min-width: 992px){
+    .navbar li {
+        margin-left : 2em;
+        margin-right : 2em;
+
+
+    }
+  }
 
 body {
   background-color: #1f2833;
 }
 
-h2 {
-  text-align: center;
-  color: aquamarine;
-  margin: auto;
+.btn {
+  font-family: 'Quicksand';
 }
-
 .active {
-  color: aquamarine;
+  color: rgb(64, 155, 123);
 }
 
 // Cards
+
+.card-body {
+  font-family: 'Monda';
+}
+
+.card-title {
+  font-family: 'Advent Pro';
+}
+
 .btn-dark {
   color: aquamarine;
   margin-bottom: 1em;
+
 }
 
 .btn-dark:hover {
-  background-color: rgb(69, 87, 136);
+  background-color: rgb(96, 106, 134);
     //color: rgb(10, 8, 8);
 }
 
