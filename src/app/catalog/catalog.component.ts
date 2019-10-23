@@ -28,7 +28,7 @@ export class CatalogComponent implements OnInit {
   ngOnInit() {
     this.items = new Array<Item>();
     console.log(localStorage.getItem('currentUsr'));
-    this.iServ.findMyItems().subscribe(data => {
+    this.iServ.findAll().subscribe(data => {
       data.forEach(item => {
         const newItem = new Item().deserialize(item);
         this.items.push(newItem);
@@ -37,26 +37,29 @@ export class CatalogComponent implements OnInit {
   }
 
   public like(id: number) {
-    console.log(id);
-    this.iServ.like(id).subscribe(
-      res => {
-        console.log(res); // Get the item ID from backend...
-      },
-      err => {
-        console.log('Error occured');
-      }
-    );
+    if (localStorage.getItem('currentUsr') != null) {
+      console.log(id);
+      this.iServ.like(id).subscribe(
+        res => {
+          console.log(res); // Get the item ID from backend...
+        },
+        err => {
+          console.log('Error occured');
+        }
+      );
 
-    this.iServ.isMatch(id).subscribe(
-      res => {
-        console.log(res); // Get the Boolean from backend...
-      },
-      err => {
-        console.log('Error occured');
-      }
-    );
+      this.iServ.isMatch(id).subscribe(
+        res => {
+          console.log(res); // Get the Boolean from backend...
+        },
+        err => {
+          console.log('Error occured');
+        }
+      );
 
-    this.router.navigate(['mylikes']);
+      this.router.navigate(['mylikes']);
+    }
+    this.router.navigate(['']);
   }
 
   openModal(template: TemplateRef<any>, item: Item) {

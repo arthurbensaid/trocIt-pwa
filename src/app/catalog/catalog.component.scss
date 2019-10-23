@@ -1,12 +1,3 @@
-
-
-h2 {
-  text-align: center;
-  color: aquamarine;
-  margin: auto;
-
-}
-
 // Navbar
 
 .navbar {
@@ -33,6 +24,8 @@ margin-bottom: 2em;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2%;
+  border: none;
+  background-color: rgb(48, 98, 86);
 }
 
 // Cards
@@ -105,6 +98,6 @@ border-radius: 1em;
   }
 
   #vueItem {
-    background-color: #1f2833;
+    background-color: rgb(48, 98, 86);
 
   }

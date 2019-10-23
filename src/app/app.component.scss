@@ -1,31 +1,12 @@
 
 
-h2 {
-  text-align: center;
-  color: aquamarine;
-  margin: auto;
-
-}
-
-// Navbar
-
 .navbar {
-margin-bottom: 2em;
-
-
+  background-color: rgb(48, 98, 86);
 }
 
 .nav-link {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-
-@media (min-width: 992px){
-  .navbar li {
-      margin-left : 1em;
-      margin-right : 1em;
-
-  }
+  font-family: 'Orbitron', sans-serif;
+  color: aquamarine;
 }
 
 .btn-center {
@@ -46,13 +27,16 @@ margin-bottom: 2em;
     //color: rgb(10, 8, 8);
 }
 
-.card {
+.container .card {
   margin-bottom: 8%;
+  -webkit-box-shadow: 0 0 5px 2px rgb(48, 98, 86);
+  box-shadow: 5px 5px 5px rgb(48, 98, 86);
 }
+
+
 .container {
   margin-top: 2%;
   padding: 20px;
-
 }
 
 .inner {
@@ -105,6 +89,6 @@ border-radius: 1em;
   }
 
   #vueItem {
-    background-color: #1f2833;
+    background-color: rgb(48, 98, 86);
 
   }
